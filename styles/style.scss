@@ -1,0 +1,411 @@
+$black: #0d0d0d;
+$grey: #262626;
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	color: white;
+	background-color: #eee;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.device {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	position: relative;
+	top: 1rem;
+	width: 376px;
+	height: 812px;
+	border-radius: 39px;
+	box-sizing: border-box;
+	transform: rotate(6deg) scale(.85);
+	box-shadow:
+		25px 60px 125px -25px transparentize($black, .5),
+		20px 40px 75px -35px transparentize($black, .4),
+		0 0 0 20px $black,
+		0 0 0 22px lighten($black, 5%);
+}
+
+$offset: -25px;
+
+.ringer-switch {
+	position: absolute;
+	top: 110px;
+	left: $offset;
+	height: 30px;
+	width: 3px;
+	background: $black;
+	border-radius: 3px 0 0 3px;
+}
+
+.volume {
+	position: absolute;
+	left: $offset;
+	height: 65px;
+	width: 3px;
+	background: $black;
+	border-radius: 3px 0 0 3px;
+	
+	&.plus {
+		top: 170px;
+	}
+	
+	&.minus {
+		top: 250px;
+	}
+}
+
+.side-button {
+	position: absolute;
+	top: 180px;
+	right: $offset;
+	height: 95px;
+	width: 3px;
+	background: $black;
+	border-radius: 0 3px 3px 0;
+}
+
+.display {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: black;
+	overflow: hidden;
+	border-radius: 39px;
+}
+
+.notch {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 206px;
+	height: 30px;
+	margin: 0 auto;
+	background: $black;
+	border-radius: 0 0 20px 20px;
+	
+	span {
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		display: block;
+		overflow: hidden;		
+		
+		&:nth-child(1) {
+			left: -6px;
+			background: radial-gradient(circle at bottom left, transparent 6px, $black 3px);
+		}
+		
+		&:nth-child(2) {
+			right: -6px;
+			background: radial-gradient(circle at bottom right, transparent 6px, $black 3px);
+		}
+	}
+}
+
+.speaker,
+.camera {
+	position: absolute;
+	top: 7px;
+	height: 8px;
+	z-index: 1;
+}
+
+.speaker {
+	display: block;
+	left: 0;
+	right: 0;
+	width: 45px;
+	margin: 0 auto;
+	border-radius: 4px;
+	box-shadow: inset 0 0 1px 2px transparentize(black, .7);
+	background: $grey;
+}
+
+.camera {
+	right: 140px;
+	width: 8px;
+	border: 2px solid lighten($black, 4%);
+	border-radius: 50%;
+	box-sizing: border-box;
+	background: MidnightBlue;
+}
+
+.icons-top {
+	position: absolute;
+	top: 18px;
+	left: 292px;
+	width: 70px;
+	height: 12px;
+	z-index: 1;
+	
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 22px;
+		left: 0;
+		right: 0;
+		width: 50px;
+		height: 2px;
+		margin: 0 auto;
+		border-radius: 1px;
+		background: transparentize(white, .6);
+	}
+	
+	.cell {
+		display: flex;
+		height: 100%;
+		
+		span {
+			display: block;
+			align-self: flex-end;
+			width: 3px;
+			background: white;
+			border-radius: 1px;
+			
+			&:not(:last-child) {
+				margin-right: 2px;
+			}
+			
+			&:nth-child(1) {
+				height: 4px;
+			}
+			
+			&:nth-child(2) {
+				height: 6px;
+			}
+			
+			&:nth-child(3) {
+				height: 8px;
+			}
+			
+			&:nth-child(4) {
+				height: 10px;
+				opacity: .5;
+			}
+		}
+	}
+	
+	.wifi {
+		position: relative;
+		transform: rotate(-45deg);
+		position: absolute;
+		left: 31px;
+		
+		span {
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border: {
+				color: white;
+				style: solid;
+				width: 2px 2px 0 0;
+				radius: 0 100% 0 0;
+			}
+			
+			&:nth-child(1) {
+				width: 9px;
+  			height: 9px;
+			}
+			
+			&:nth-child(2) {
+				width: 5px;
+  			height: 5px;
+			}
+			
+			&:nth-child(3) {
+				width: 1px;
+  			height: 1px;
+				background: white;
+			}
+		}
+	}
+	
+	.battery {
+		position: absolute;
+		left: 44px;
+		top: 0;
+		width: 22px;
+		height: 10px;
+		border: 1px solid transparentize(white, .6);
+		border-radius: 3px;
+		
+		&::after {
+			content: '';
+			position: absolute;
+			top: 3px;
+			right: -5px;
+			width: 2px;
+			height: 4px;
+			background: transparentize(white, .6);
+			border-bottom-right-radius: 50%;
+  		border-top-right-radius: 50%;
+		}
+		
+		span {
+			position: absolute;
+			left: 2px;
+			top: 2px;
+			height: 6px;
+			width: 10px;
+			background: white;
+			border-radius: 1px;
+		}
+	}
+}
+
+.icon-lock {
+	position: absolute;
+	top: 4.5rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 24px;
+	height: 22px;
+	background: white;
+	border-radius: 2px;
+	
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -15px;
+		left: 0;
+		right: 0;
+		width: 12px;
+		height: 12px;
+		margin: 0 auto;
+		border: 3px solid white;
+		border-top-right-radius: 50%;
+		border-top-left-radius: 50%;
+	}
+}
+
+.date-time {
+	position: absolute;
+	top: 6.5rem;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 22px;
+	#time {
+		font-size: 75px;
+		font-weight: 100;
+	}
+}
+
+.button {
+	position: absolute;
+	width: 54px;
+	height: 54px;
+	bottom: 3rem;
+	border-radius: 50%;
+	background: transparentize(black, .8);
+	
+	&--left,
+	&--right {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	&--left {
+		left: 3rem;
+	}
+	
+	&--right {
+		right: 3rem;
+	}
+}
+
+.swipe {
+	position: absolute;
+	bottom: 1rem;
+	width: 100%;
+	font-size: 17px;
+	text-align: center;
+	opacity: 0;
+	animation-name: swipe-p;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+	animation-delay: .5s;
+	animation-timing-function: ease-in-out;
+}
+
+.home-bar {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 8px;
+	width: 130px;
+	height: 5px;
+	margin: 0 auto;
+	background: transparentize(white, .2);
+	opacity: .75;
+	border-radius: 5px;
+	animation-name: swipe-bar;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+	animation-delay: .5s;
+	animation-timing-function: ease-in-out;
+}
+
+video {
+	width: auto;
+	height: 100%;
+}
+
+@keyframes swipe-p {
+  0% {
+    opacity: 0; 
+		transform: translateY(1rem);
+  }
+	25% {
+    opacity: 0; 
+		transform: translateY(1rem);
+  }
+  50% {
+    opacity: 1;
+		transform: translateY(0);
+  }
+	75% {
+    opacity: 1; 
+  }
+  100% {  
+    opacity: 0;    
+  }
+}
+
+@keyframes swipe-bar {
+  0% {
+		transform: translateY(0);
+  }
+	25% {
+		transform: translateY(0);
+  }
+	50% {
+		transform: translateY(-.5rem);
+  }
+	75% {
+		transform: translateY(0);
+  }
+  100% {
+		transform: translateY(0);
+  }
+}
